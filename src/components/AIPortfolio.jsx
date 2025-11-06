@@ -200,7 +200,6 @@ const AIPortfolio = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-
   const portfolioData = {
     name: "Dharshina Venkatesan",
     title: "Software Testing & Automation Engineer",
@@ -233,10 +232,9 @@ const AIPortfolio = () => {
         location: "Chicago, United States",
         period: "Jan 2025 - Oct 2025",
         responsibilities: [
-          "Built and enhanced Java-based web modules using Spring Boot and RESTful APIs",
-          "Developed automated test scripts in Java with Selenium WebDriver and TestNG",
-          "Performed UI testing to verify layout alignment, responsiveness, and user interactions",
-          "Conducted unit and integration testing using JUnit, improving overall code quality"
+          "Partnered with product and development teams to validate feature requirements, ensuring QA checkpoints were embedded into customer-facing product enhancements.",
+          "Conducted data analysis using Google Analytics, Tableau, and Excel to identify patterns and improve product usability and adoption.",
+          "Authored process documentation and escalation workflows, driving quality improvements and reducing resolution time across customer-facing teams.",
         ]
       },
       
@@ -246,31 +244,29 @@ const AIPortfolio = () => {
         location: "Chennai, India",
         period: "Jun 2020 - Jul 2022",
         responsibilities: [
-          "Designed and implemented automated test frameworks in Java using Selenium WebDriver and TestNG",
-          "Performed functional, regression, and API testing using Postman and SOAP UI",
-          "Integrated automated test suites with CI/CD pipelines (Jenkins)",
-          "Collaborated in Agile sprints, tracked defects in JIRA, and delivered detailed test reports"
+          "Designed and automated 200+ test cases with Selenium WebDriver, improving regression coverage and reducing manual testing effort by 30%.",
+          "Performed REST API and microservices validation using Postman, SOAP UI, and Swagger, ensuring seamless backend integrations and service reliability",
+          "Integrated automated test scripts into CI/CD pipelines with Jenkins and GitHub Actions, enabling faster, more reliable deployments.",
+          "Conducted performance and load testing with JMeter, providing baseline metrics on system stability under peak conditions.",
+          "Collaborated in Agile ceremonies (sprint planning, reviews, retrospectives) to align QA priorities with development timelines.",
+          "Tracked and reported quality metrics (defect density, test execution coverage, automation pass rates) to stakeholders, enabling data-driven improvements in QA processes.",
+          "Improved SQL queries for test data retrieval, reducing execution times by 60–70% and enhancing efficiency in database testing."
         ]
       }
     ],
     projects: [
+      
       {
         name: "Model-Based Testing of Automated Retail Kiosk",
         description: "Designed an EFSM model to represent system states and transitions for an automated retail kiosk, enabling structured test case generation",
         tech: ["Java", "EFSM", "Model-Based Testing"],
-        highlights: ["Developed Java-based drivers for model-based tests", "Achieved high test coverage through multiple-condition testing"]
-      },
-      {
-        name: "Model-Based Testing of Automated Retail Kiosk",
-        description: "Designed an EFSM model to represent system states and transitions for an automated retail kiosk, enabling structured test case generation",
-        tech: ["Java", "EFSM", "Model-Based Testing"],
-        highlights: ["Developed Java-based drivers for model-based tests", "Achieved high test coverage through multiple-condition testing"]
+        highlights: ["Designed an EFSM model to represent system states and transitions for an automated retail kiosk, enabling structured and accurate test case generation.", "Developed Java-based drivers to execute model-based tests covering ghost transitions, default behaviors, and variable-based conditions. Achieved high test coverage through multiple-condition testing, transition pair validation, and a comprehensive automated test suite"]
       },
       {
         name: "Cross-Browser Testing for E-commerce Platform",
         description: "Implemented automated test scripts using Selenium WebDriver and TestNG to validate key functionalities",
         tech: ["Selenium WebDriver", "TestNG", "Selenium Grid"],
-        highlights: ["Performed cross-browser testing on Chrome, Firefox, and Edge", "Generated detailed test execution reports"]
+        highlights: ["Developed Java-based automation frameworks in Selenium WebDriver and TestNG, writing reusable scripts and regression test cases for web-based applications to validate employee login, leave application submission, payroll calculations.", "Performed cross-browser testing on Chrome, Firefox, and Edge using Selenium Grid to ensure consistent application behavior. Captured detailed screenshots and failure logs through custom utility functions to generate test execution reports for debugging"]
       }
     ]
   };
@@ -436,25 +432,36 @@ Answer questions naturally and conversationally. Keep responses concise but info
             </Box>
 
             <Stack direction="row" spacing={1.5} alignItems="center">
-              <Button variant="contained" startIcon={<Email />} href={`mailto:${portfolioData.email}`}>
-                Email
-              </Button>
-              <Button variant="outlined" startIcon={<LinkedIn />} href={portfolioData.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </Button>
-              <Tooltip title={mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
-                <IconButton
-                  onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-                  size="medium"
-                  sx={{
-                    border: `1px solid ${alpha(muiTheme.palette.primary.main, 0.25)}`,
-                    bgcolor: alpha(muiTheme.palette.primary.main, 0.06),
-                  }}
-                >
-                  {mode === 'light' ? <DarkMode /> : <LightMode />}
-                </IconButton>
-              </Tooltip>
-            </Stack>
+  
+
+  
+
+  {/* 🔽 New Download Resume Button */}
+  <Button
+    variant="outlined"
+    color="secondary"
+    startIcon={<Work />}
+    href="https://drive.google.com/file/d/1CUIdASpWGzWhPLaIz_4nZfqTZnfw1k3P/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download Resume
+  </Button>
+
+  <Tooltip title={mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
+    <IconButton
+      onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+      size="medium"
+      sx={{
+        border: `1px solid ${alpha(muiTheme.palette.primary.main, 0.25)}`,
+        bgcolor: alpha(muiTheme.palette.primary.main, 0.06),
+      }}
+    >
+      {mode === 'light' ? <DarkMode /> : <LightMode />}
+    </IconButton>
+  </Tooltip>
+</Stack>
+
           </Toolbar>
         </AppBar>
 
@@ -806,12 +813,6 @@ Answer questions naturally and conversationally. Keep responses concise but info
               <Card>
                 <CardContent>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                    <Button variant="contained" startIcon={<Email />} href={`mailto:${portfolioData.email}`} size="large">
-                      Email Me
-                    </Button>
-                    <Button variant="outlined" startIcon={<LinkedIn />} href={portfolioData.linkedin} size="large" target="_blank" rel="noopener noreferrer">
-                      LinkedIn
-                    </Button>
                     <Button variant="outlined" startIcon={<GitHub />} href={portfolioData.github} size="large" target="_blank" rel="noopener noreferrer">
                       GitHub
                     </Button>
@@ -827,3 +828,5 @@ Answer questions naturally and conversationally. Keep responses concise but info
 };
 
 export default AIPortfolio;
+
+
