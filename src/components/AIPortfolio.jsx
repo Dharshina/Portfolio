@@ -195,7 +195,7 @@ const AIPortfolio = () => {
     { type: 'bot', text: "Hi! I'm Dharshina's AI assistant powered by Groq. Ask me anything about my experience, skills, projects, or education!" }
   ]);
   const [input, setInput] = useState('');
-  const [apiKey, setApiKey] = useState('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');
+  const apiKey = process.env.REACT_APP_API_KEY;
   const [showApiInput, setShowApiInput] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
