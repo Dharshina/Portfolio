@@ -24,7 +24,8 @@ import {
   Slide,
   CssBaseline,
   Tooltip,
-  useMediaQuery
+  useMediaQuery,
+  Snackbar
 } from '@mui/material';
 import {
   Send,
@@ -45,6 +46,7 @@ import {
   DarkMode
 } from '@mui/icons-material';
 import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
+import { ContentCopy } from '@mui/icons-material';
 
 // ------- Design Tokens (Light/Dark) -------
 const getDesignTokens = (mode) => {
@@ -237,14 +239,14 @@ const AIPortfolio = () => {
           "Authored process documentation and escalation workflows, driving quality improvements and reducing resolution time across customer-facing teams.",
         ]
       },
-      
+
       {
         role: "Test Automation Engineer",
         company: "Accenture",
         location: "Chennai, India",
         period: "Jun 2020 - Jul 2022",
         responsibilities: [
-          "Designed and automated 200+ test cases with Selenium WebDriver, improving regression coverage and reducing manual testing effort by 30%.",
+          "Designed and automated 200+ test cases with Selenium WebDriver and Cypress, improving regression coverage and reducing manual testing effort by 30%.",
           "Performed REST API and microservices validation using Postman, SOAP UI, and Swagger, ensuring seamless backend integrations and service reliability",
           "Integrated automated test scripts into CI/CD pipelines with Jenkins and GitHub Actions, enabling faster, more reliable deployments.",
           "Conducted performance and load testing with JMeter, providing baseline metrics on system stability under peak conditions.",
@@ -255,7 +257,7 @@ const AIPortfolio = () => {
       }
     ],
     projects: [
-      
+
       {
         name: "Model-Based Testing of Automated Retail Kiosk",
         description: "Designed an EFSM model to represent system states and transitions for an automated retail kiosk, enabling structured test case generation",
@@ -336,6 +338,16 @@ PROJECTS:
    Technologies: ${portfolioData.projects[1].tech.join(', ')}
 
 Answer questions naturally and conversationally. Keep responses concise but informative. Always speak in first person as if you are Dharshina's representative.`;
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(portfolioData.email);
+      setOpen(true);
+    } catch (err) {
+      console.error("Failed to copy email: ", err);
+    }
   };
 
   const callGroqAPI = async (userMessage) => {
@@ -422,45 +434,46 @@ Answer questions naturally and conversationally. Keep responses concise but info
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
-            <Box>
-              <Typography variant="h6" component="h1" color="primary" fontWeight={800}>
-                {portfolioData.name}
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                {portfolioData.title}
-              </Typography>
-            </Box>
+            <Stack direction="row" spacing={1.5}>
+              <Box>
+                <Typography variant="h6" component="h1" color="primary" fontWeight={800}>
+                  {portfolioData.name}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {portfolioData.title}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Tooltip title={mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
+                  <IconButton
+                    onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+                    size="medium"
+                    sx={{
+                      border: `1px solid ${alpha(muiTheme.palette.primary.main, 0.25)}`,
+                      bgcolor: alpha(muiTheme.palette.primary.main, 0.06),
+                    }}
+                  >
+                    {mode === 'light' ? <DarkMode /> : <LightMode />}
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Stack>
 
             <Stack direction="row" spacing={1.5} alignItems="center">
-  
 
-  
 
-  {/* 🔽 New Download Resume Button */}
-  <Button
-    variant="outlined"
-    color="secondary"
-    startIcon={<Work />}
-    href="https://drive.google.com/file/d/1CUIdASpWGzWhPLaIz_4nZfqTZnfw1k3P/view?usp=sharing"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Download Resume
-  </Button>
-
-  <Tooltip title={mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
-    <IconButton
-      onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-      size="medium"
-      sx={{
-        border: `1px solid ${alpha(muiTheme.palette.primary.main, 0.25)}`,
-        bgcolor: alpha(muiTheme.palette.primary.main, 0.06),
-      }}
-    >
-      {mode === 'light' ? <DarkMode /> : <LightMode />}
-    </IconButton>
-  </Tooltip>
-</Stack>
+              {/* 🔽 New Download Resume Button */}
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<Work />}
+                href="https://drive.google.com/file/d/1CUIdASpWGzWhPLaIz_4nZfqTZnfw1k3P/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Resume
+              </Button>
+            </Stack>
 
           </Toolbar>
         </AppBar>
@@ -471,18 +484,18 @@ Answer questions naturally and conversationally. Keep responses concise but info
               <Slide in timeout={600} direction="up">
                 <Box>
                   <Avatar
-  src="https://media.licdn.com/dms/image/v2/D5635AQEcDJYPfFYV5Q/profile-framedphoto-shrink_400_400/B56ZezSAbHHQAs-/0/1751059531731?e=1762999200&v=beta&t=wxZEyMI3YlpJlztCwl9o3D3OGhKibN-ojdcmDiEd_yc"
-  alt="User Avatar"
-  sx={{
-    width: 120,
-    height: 120,
-    mb: 3,
-    boxShadow:
-      '0 0 0 4px rgba(255,255,255,0.9), 0 0 24px rgba(79,70,229,0.45)',
-  }}
->
-  DV
-</Avatar>
+                    src="https://media.licdn.com/dms/image/v2/D5635AQEcDJYPfFYV5Q/profile-framedphoto-shrink_400_400/B56ZezSAbHHQAs-/0/1751059531731?e=1762999200&v=beta&t=wxZEyMI3YlpJlztCwl9o3D3OGhKibN-ojdcmDiEd_yc"
+                    alt="User Avatar"
+                    sx={{
+                      width: 120,
+                      height: 120,
+                      mb: 3,
+                      boxShadow:
+                        '0 0 0 4px rgba(255,255,255,0.9), 0 0 24px rgba(79,70,229,0.45)',
+                    }}
+                  >
+                    DV
+                  </Avatar>
 
                   <Typography variant="h3" gutterBottom>{portfolioData.name}</Typography>
                   <Typography variant="h5" color="primary" gutterBottom>{portfolioData.title}</Typography>
@@ -515,7 +528,7 @@ Answer questions naturally and conversationally. Keep responses concise but info
 
             <Grid item xs={12} md={6} sx={{ mx: 'auto' }}>
               <Fade in timeout={700}>
-                <Paper elevation={3} sx={{ height: 520, width: 1000, display: 'flex', flexDirection: 'column'}}>
+                <Paper elevation={3} sx={{ height: 520, width: 1000, display: 'flex', flexDirection: 'column' }}>
                   <Box
                     sx={{
                       p: 2,
@@ -813,6 +826,19 @@ Answer questions naturally and conversationally. Keep responses concise but info
               <Card>
                 <CardContent>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                    <Button variant="outlined" startIcon={<ContentCopy />} onClick={handleCopy}>
+                      Email Me
+                    </Button>
+                    <Snackbar
+                      open={open}
+                      autoHideDuration={2000}
+                      onClose={() => setOpen(false)}
+                      message="Email copied to clipboard!"
+                      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    />
+                    <Button variant="outlined" startIcon={<LinkedIn />} href={portfolioData.linkedin} target="_blank" rel="noopener noreferrer">
+                      LinkedIn
+                    </Button>
                     <Button variant="outlined" startIcon={<GitHub />} href={portfolioData.github} size="large" target="_blank" rel="noopener noreferrer">
                       GitHub
                     </Button>
