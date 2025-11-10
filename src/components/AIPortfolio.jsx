@@ -38,8 +38,6 @@ import {
   LinkedIn,
   School,
   EmojiEvents,
-  Key,
-  Warning,
   LocationOn,
   Phone,
   LightMode,
