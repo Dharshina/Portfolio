@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import {
   Box,
   Container,
@@ -14,17 +14,14 @@ import {
   CardContent,
   Grid,
   Divider,
-  Alert,
   CircularProgress,
   AppBar,
   Toolbar,
   InputAdornment,
-  Collapse,
   Fade,
   Slide,
   CssBaseline,
   Tooltip,
-  useMediaQuery,
   Snackbar
 } from '@mui/material';
 import {
@@ -188,7 +185,6 @@ const getDesignTokens = (mode) => {
 const AIPortfolio = () => {
   // ---- Dark mode state (defaults to light as requested) ----
   const [mode, setMode] = useState('light');
-  const prefersDark = useMediaQuery('(prefers-color-scheme: dark)'); // not auto-applying, just available if needed
   const muiTheme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   const [messages, setMessages] = useState([
@@ -196,7 +192,6 @@ const AIPortfolio = () => {
   ]);
   const [input, setInput] = useState('');
   const apiKey = process.env.REACT_APP_API_KEY;
-  const [showApiInput, setShowApiInput] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
@@ -269,12 +264,6 @@ const AIPortfolio = () => {
       }
     ]
   };
-
-  const highlightMetrics = [
-    { label: 'Years in QA', value: '2+ yrs', icon: Work },
-    { label: 'Automation Tools', value: `${portfolioData.skills.testing.length} tools`, icon: Code },
-    { label: 'Key Projects', value: `${portfolioData.projects.length} case studies`, icon: EmojiEvents }
-  ];
 
   const SectionHeader = ({ icon: Icon, title, subtitle }) => (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
@@ -404,16 +393,6 @@ Answer questions naturally and conversationally. Keep responses concise but info
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
-    }
-  };
-
-  const handleApiKeySubmit = () => {
-    if (apiKey.trim()) {
-      setShowApiInput(false);
-      setMessages([{
-        type: 'bot',
-        text: "Great! API key configured. I'm now powered by Groq's Llama 3.3 70B model. Ask me anything about Dharshina's experience, skills, or projects!"
-      }]);
     }
   };
 
