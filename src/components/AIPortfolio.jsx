@@ -234,9 +234,10 @@ const AIPortfolio = () => {
         location: "Chicago, United States",
         period: "Jan 2025 - Oct 2025",
         responsibilities: [
-          "Partnered with product and development teams to validate feature requirements, ensuring QA checkpoints were embedded into customer-facing product enhancements.",
-          "Conducted data analysis using Google Analytics, Tableau, and Excel to identify patterns and improve product usability and adoption.",
-          "Authored process documentation and escalation workflows, driving quality improvements and reducing resolution time across customer-facing teams.",
+          "Built and enhanced Java-based web modules using Spring Boot and RESTful APIs, ensuring efficient data exchange between frontend and backend systems.",
+          "Developed and maintained automated test scripts in Java with Selenium WebDriver and TestNG to validate UI functionality across multiple browsers.",
+          "Performed UI testing to verify layout alignment, responsiveness, and user interactions using Selenium and Chrome DevTools, ensuring a seamless front-end experience.",
+          "Conducted unit and integration testing using JUnit, identified and fixed bugs through debugging tools, and improved overall code quality before deployment."
         ]
       },
 
@@ -246,13 +247,11 @@ const AIPortfolio = () => {
         location: "Chennai, India",
         period: "Jun 2020 - Jul 2022",
         responsibilities: [
-          "Designed and automated 200+ test cases with Selenium WebDriver and Cypress, improving regression coverage and reducing manual testing effort by 30%.",
-          "Performed REST API and microservices validation using Postman, SOAP UI, and Swagger, ensuring seamless backend integrations and service reliability",
-          "Integrated automated test scripts into CI/CD pipelines with Jenkins and GitHub Actions, enabling faster, more reliable deployments.",
+          "Designed and implemented automated test frameworks in Java using Selenium WebDriver and TestNG, enhancing test coverage, reducing execution time, and ensuring cross-browser UI validation.",
+          "Performed functional, regression, and API testing using Postman, SOAP UI and validated data integrity through SQL queries and XML/JSON response verification.",
+          "Integrated automated test suites with CI/CD pipelines (Jenkins) to enable continuous testing, while conducting performance testing using JMeter to assess system scalability.",
           "Conducted performance and load testing with JMeter, providing baseline metrics on system stability under peak conditions.",
-          "Collaborated in Agile ceremonies (sprint planning, reviews, retrospectives) to align QA priorities with development timelines.",
-          "Tracked and reported quality metrics (defect density, test execution coverage, automation pass rates) to stakeholders, enabling data-driven improvements in QA processes.",
-          "Improved SQL queries for test data retrieval, reducing execution times by 60–70% and enhancing efficiency in database testing."
+          "Collaborated with the team in Agile sprints, tracked and resolved defects in JIRA, and delivered detailed test reports and quality metrics to stakeholders for release decisions."
         ]
       }
     ],
