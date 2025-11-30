@@ -42,6 +42,7 @@ import {
 } from '@mui/icons-material';
 import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
 import { ContentCopy } from '@mui/icons-material';
+import Profile from '../assets/Profile.jpg'
 
 // ------- Design Tokens (Light/Dark) -------
 const getDesignTokens = (mode) => {
@@ -222,10 +223,10 @@ const AIPortfolio = () => {
     },
     experience: [
       {
-        role: "Software Engineer",
+        role: "Software Test Engineer",
         company: "Software Architects LLC",
         location: "Chicago, United States",
-        period: "Jan 2025 - Oct 2025",
+        period: "Jan 2025 - Nov 2025",
         responsibilities: [
           "Built and enhanced Java-based web modules using Spring Boot and RESTful APIs, ensuring efficient data exchange between frontend and backend systems.",
           "Developed and maintained automated test scripts in Java with Selenium WebDriver and TestNG to validate UI functionality across multiple browsers.",
@@ -460,7 +461,7 @@ Answer questions naturally and conversationally. Keep responses concise but info
               <Slide in timeout={600} direction="up">
                 <Box>
                   <Avatar
-                    src="https://media.licdn.com/dms/image/v2/D5635AQEcDJYPfFYV5Q/profile-framedphoto-shrink_400_400/B56ZezSAbHHQAs-/0/1751059531731?e=1762999200&v=beta&t=wxZEyMI3YlpJlztCwl9o3D3OGhKibN-ojdcmDiEd_yc"
+                    src={Profile}
                     alt="User Avatar"
                     sx={{
                       width: 120,
